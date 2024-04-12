@@ -14,7 +14,15 @@ class Quote(Base):
     content = db.Column(db.String(200), nullable=False)
     author = db.Column(db.String(50), nullable=False)
 
+class CSV(Base):
+    id = db.Column(db.Integer, primary_key=True)
+    filename = db.Column(db.String(200), nullable=False)
+    generated_at = db.Column(db.DateTime, nullable=False)
+
 if __name__ == '__main__':
+    # Delete the database file before creating a new one.
+    db.drop_all()
+    
     print("Creating database tables...", end='')
     db.create_all()
     print(" Done!")
