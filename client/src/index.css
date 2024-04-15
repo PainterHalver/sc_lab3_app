@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    font-family: "Inter";
+}
+
+:root {
+    --bg-primary: #0e1217;
+    --bg-secondary: #1c1f26;
+    --bg-secondary-hover: #393d48;
+    --bg-secondary-active: #2f333d;
+    --bg-table-header: #374151;
+    --border: #383d47;
+    --border-hover: #545b6a;
+    --text-primary: #ffffff;
+    --text-secondary: #a8b3cf;
+}
