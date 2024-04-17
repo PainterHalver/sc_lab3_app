@@ -60,7 +60,7 @@ export default function CheckSecurityGroups() {
                         <td className="px-6 py-3">{sg["ComplianceType"]}</td>
                         <td className="px-6 py-3">
                             {sg["Annotations"].map((annotation) => (
-                                <p className="text-sm">{annotation}</p>
+                                <p className="text-sm" key={annotation}>{annotation}</p>
                             ))}
                         </td>
                     </tr>

@@ -4,8 +4,7 @@ import {
   BrowserRouter,
   Link,
   Route,
-  Routes,
-  useLocation
+  Routes
 } from "react-router-dom";
 import CSVList from './components/CSVList';
 import CheckSecurityGroups from './components/CheckSecurityGroups';

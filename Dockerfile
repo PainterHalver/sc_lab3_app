@@ -1,5 +1,5 @@
 # Build static React app
-FROM node:18.20.2-alpine as build
+FROM node:18.20.2-alpine AS build
 WORKDIR /app
 COPY ./client/package.json ./client/package-lock.json ./
 RUN npm install
