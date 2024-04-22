@@ -13,8 +13,9 @@ export default function CheckSecurityGroups() {
                 method: "POST"
             });
             const data = await response.json();
+            const sortedSecurityGroups = data.security_groups.sort((a, b) => b["Annotations"].length - a["Annotations"].length)
             setCsv(data.csv);
-            setSecurityGroups(data.security_groups);
+            setSecurityGroups(sortedSecurityGroups);
         } catch (error) {
             console.log("CHECK SECURITY GROUPS ERROR:", error)
         } finally {
@@ -57,7 +58,11 @@ export default function CheckSecurityGroups() {
                         </th>
                         <td className="px-6 py-3">{sg["GroupName"]}</td>
                         <td className="px-6 py-3">{sg["Description"]}</td>
-                        <td className="px-6 py-3">{sg["ComplianceType"]}</td>
+                        <td className="px-6 py-3">
+                            <div className={`badge ${sg["ComplianceType"] === "COMPLIANT" ? 'badge-success' : 'badge-error'}`}>
+                                {sg["ComplianceType"]}
+                            </div>
+                        </td>
                         <td className="px-6 py-3">
                             {sg["Annotations"].map((annotation) => (
                                 <p className="text-sm" key={annotation}>{annotation}</p>
