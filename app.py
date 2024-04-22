@@ -22,6 +22,10 @@ def create_app():
         else:
             return send_from_directory(app.static_folder, "index.html")
 
+    @app.route("/health")
+    def health():
+        return "OK"
+
     app.register_blueprint(security_groups_bp)
     app.register_blueprint(csv_bp)
     setup_database(app)
