@@ -25,7 +25,8 @@ const routes = [
 
 function NavigationBar() {
   return (
-    <nav className="flex items-center justify-center w-full h-20 bg-[--bg-primary] border-b border-[--border]">
+    <nav className="flex items-center justify-center w-full h-20 bg-[--bg-primary] border-b border-[--border] relative">
+      <span className='absolute top-[40%] left-5 text-lg'>INSTANCE_ID</span>
       {routes.map(route => (
         <Link
           key={route.path}
