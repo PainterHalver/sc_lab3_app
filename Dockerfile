@@ -9,7 +9,9 @@ RUN npm run build
 FROM python:3.9.18-alpine
 WORKDIR /app
 COPY ./requirements.txt requirements.txt
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
+RUN apk add --no-cache curl && \
+    pip install --no-cache-dir --upgrade -r requirements.txt
 COPY . .
 COPY --from=build /app/build ./client/build
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:create_app()"]
+RUN chmod +x start.sh
+CMD ["./start.sh"]
