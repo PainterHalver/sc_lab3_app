@@ -7,14 +7,14 @@ import {
   Routes
 } from "react-router-dom";
 import CSVList from './components/CSVList';
-import CheckSecurityGroups from './components/CheckSecurityGroups';
+import CheckResources from './components/CheckResources';
 import "@fontsource/inter"; // Defaults to weight 400
 
 const routes = [
   {
     path: '/',
-    component: CheckSecurityGroups,
-    label: 'Check Security Groups'
+    component: CheckResources,
+    label: 'Check Resources'
   },
   {
     path: '/csv',

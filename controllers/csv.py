@@ -17,6 +17,6 @@ def get_csv():
 def download_csv(id):
     csv = CSV.query.get(id)
     url = s3.generate_presigned_url(
-        "get_object", Params={"Bucket": BUCKET_NAME, "Key": csv.filename}
+        "get_object", Params={"Bucket": BUCKET_NAME, "Key": csv.filename}, ExpiresIn=43200
     )
     return redirect(url)

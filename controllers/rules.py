@@ -20,12 +20,12 @@ def rules_check():
     for resource in resources:
         for rule in RULES:
             if type(resource) in rule.resource_types:
-                print(f"Evaluating {resource} for {rule}")
                 if not rule.evaluate(resource):
                     resource.status = "NON_COMPLIANT"
                     resource.annotations.append(rule.description)
 
-    df = pandas.DataFrame([resource.to_dict() for resource in resources])
+    resources = [resource.to_dict() for resource in resources]
+    df = pandas.DataFrame(resources)
 
     # Sort the DataFrame based on the count of annotations in descending order
     df["non_compliant_count"] = df["annotations"].apply(len)
