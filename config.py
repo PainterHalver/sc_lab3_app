@@ -7,6 +7,7 @@ load_dotenv(path.join(path.dirname(__file__), ".env"))
 DATABASE_USER = getenv("DATABASE_USER")
 DEBUG = getenv("DEBUG")
 BUCKET_NAME = getenv("BUCKET_NAME")
+TEMP_FOLDER = getenv("TEMP_FOLDER") or "/tmp"
 
 uri = getenv("DATABASE_URI")
 uri.startswith("sqlite")

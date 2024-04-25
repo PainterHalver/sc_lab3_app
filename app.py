@@ -1,7 +1,7 @@
 from flask import Flask, send_from_directory
 import os
 from flask_cors import CORS
-from controllers.security_groups import security_groups_bp
+from controllers.rules import rules_bp
 from controllers.csv import csv_bp
 from config import DATABASE_URI, DEBUG
 from models import db
@@ -26,7 +26,7 @@ def create_app():
     def health():
         return "OK"
 
-    app.register_blueprint(security_groups_bp)
+    app.register_blueprint(rules_bp)
     app.register_blueprint(csv_bp)
     setup_database(app)
     return app

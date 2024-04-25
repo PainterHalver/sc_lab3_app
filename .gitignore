@@ -3,3 +3,4 @@ test.ipynb
 test/
 .scannerwork
 docker-compose.test.yml
+.env
