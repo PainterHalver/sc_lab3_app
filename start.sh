@@ -11,4 +11,4 @@ if [ $STATUS_CODE -eq 200 ]; then
 fi
 
 # Start the gunicorn server
-gunicorn --bind 0.0.0.0:8080 "app:create_app()"
+gunicorn --bind 0.0.0.0:8080 "app:create_app()" --workers 3 --threads 12 --access-logfile /var/log/app-access.log --error-logfile /var/log/app-error.log

@@ -12,6 +12,8 @@ services:
       - DATABASE_URI=${DATABASE_URI:-sqlite:////tmp/test.db}
       - BUCKET_NAME=${BUCKET_NAME:-sc-lab3-app-bucket}
       - AWS_DEFAULT_REGION=ap-southeast-1
+    volumes:
+      - /var/log:/var/log
 
 networks:
   app:
