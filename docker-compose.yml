@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   app:
     image: public.ecr.aws/j7u4k4y6/app:latest
