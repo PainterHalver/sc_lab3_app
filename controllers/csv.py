@@ -2,8 +2,12 @@ from flask import Blueprint, jsonify, redirect
 from models import CSV, db
 from config import BUCKET_NAME
 import boto3
+from botocore.config import Config
 
-s3 = boto3.client("s3")
+config = Config(signature_version="s3v4")
+s3 = boto3.client(
+    "s3", config=config, endpoint_url="https://s3.ap-southeast-1.amazonaws.com"
+)
 csv_bp = Blueprint("csv", __name__)
 
 
@@ -17,6 +21,8 @@ def get_csv():
 def download_csv(id):
     csv = CSV.query.get(id)
     url = s3.generate_presigned_url(
-        "get_object", Params={"Bucket": BUCKET_NAME, "Key": csv.filename}, ExpiresIn=43200
+        "get_object",
+        Params={"Bucket": BUCKET_NAME, "Key": csv.filename},
+        ExpiresIn=43200,
     )
     return redirect(url)

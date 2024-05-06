@@ -3,13 +3,15 @@ from models import CSV, db
 from config import BUCKET_NAME, TEMP_FOLDER
 import boto3
 import pandas
+from botocore.config import Config
 from datetime import datetime
 from utils import get_all_resources
 from aws.rules import RULES
 
 rules_bp = Blueprint("rules", __name__)
 
-s3 = boto3.client("s3")
+config = Config(signature_version="s3v4")
+s3 = boto3.client("s3", config=config)
 ec2 = boto3.client("ec2")
 config = boto3.client("config")
 
